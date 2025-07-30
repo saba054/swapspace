@@ -43,6 +43,11 @@ export default function SidebarLayout() {
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+    setSidebarOpen(false); // Close sidebar on mobile when any tab is clicked
+  };
+
   const renderContent = () => {
     switch (activeTab) {
       case "overview":
@@ -127,25 +132,25 @@ export default function SidebarLayout() {
         <h2 className="font-bold text-lg mb-4">General</h2>
 
         {/* Overview */}
-        <button onClick={() => setActiveTab("overview")} className={buttonStyle}>
+        <button onClick={() => handleTabClick("overview")} className={buttonStyle}>
           <BarChart3 className="w-6 h-6" />
           Overview
         </button>
 
         {/* Analytics */}
-        <button onClick={() => setActiveTab("analytics")} className={buttonStyle}>
+        <button onClick={() => handleTabClick("analytics")} className={buttonStyle}>
           <TrendingUp className="w-6 h-6" />
           Analytics
         </button>
 
         {/* Activity */}
-        <button onClick={() => setActiveTab("activity")} className={buttonStyle}>
+        <button onClick={() => handleTabClick("activity")} className={buttonStyle}>
           <ActivityIcon className="w-6 h-6" />
           Activity
         </button>
 
         {/* Reports */}
-        <button onClick={() => setActiveTab("reports")} className={buttonStyle}>
+        <button onClick={() => handleTabClick("reports")} className={buttonStyle}>
           <FileText className="w-6 h-6" />
           Reports
         </button>
@@ -163,11 +168,11 @@ export default function SidebarLayout() {
           </button>
           {isOpen && (
             <div className="ml-4 mt-1">
-              <button onClick={() => setActiveTab("agent")} className={dropdownItemStyle}>
+              <button onClick={() => handleTabClick("agent")} className={dropdownItemStyle}>
                 <UserCheck className="w-4 h-4 inline mr-2" />
                 Agent
               </button>
-              <button onClick={() => setActiveTab("customer")} className={dropdownItemStyle}>
+              <button onClick={() => handleTabClick("customer")} className={dropdownItemStyle}>
                 <UserPlus className="w-4 h-4 inline mr-2" />
                 Customer
               </button>
@@ -188,11 +193,11 @@ export default function SidebarLayout() {
           </button>
           {isOpen1 && (
             <div className="ml-4 mt-1">
-              <button onClick={() => setActiveTab("generalreview")} className={dropdownItemStyle}>
+              <button onClick={() => handleTabClick("generalreview")} className={dropdownItemStyle}>
                 <Star className="w-4 h-4 inline mr-2" />
                 General Review
               </button>
-              <button onClick={() => setActiveTab("surveyreviews")} className={dropdownItemStyle}>
+              <button onClick={() => handleTabClick("surveyreviews")} className={dropdownItemStyle}>
                 <MessageCircle className="w-4 h-4 inline mr-2" />
                 Survey Reviews
               </button>
@@ -201,39 +206,39 @@ export default function SidebarLayout() {
         </div>
 
         {/* Other Buttons */}
-        <button onClick={() => setActiveTab("property")} className={buttonStyle}>
+        <button onClick={() => handleTabClick("property")} className={buttonStyle}>
           <Home className="w-6 h-6" />
           Property Management
         </button>
 
-        <button onClick={() => setActiveTab("subscription")} className={buttonStyle}>
+        <button onClick={() => handleTabClick("subscription")} className={buttonStyle}>
           <CreditCard className="w-6 h-6" />
           Subscription
         </button>
 
-        <button onClick={() => setActiveTab("messages")} className={buttonStyle}>
+        <button onClick={() => handleTabClick("messages")} className={buttonStyle}>
           <MessageSquare className="w-6 h-6" />
           Messages
         </button>
 
-        <button onClick={() => setActiveTab("notifications")} className={buttonStyle}>
+        <button onClick={() => handleTabClick("notifications")} className={buttonStyle}>
           <Bell className="w-6 h-6" />
           Notifications
         </button>
 
-        <button onClick={() => setActiveTab("settings")} className={buttonStyle}>
+        <button onClick={() => handleTabClick("settings")} className={buttonStyle}>
           <SettingsIcon className="w-6 h-6" />
           Settings
         </button>
 
         <h2 className="font-bold text-lg mt-4 mb-2">Support</h2>
 
-        <button onClick={() => setActiveTab("feedback")} className={buttonStyle}>
+        <button onClick={() => handleTabClick("feedback")} className={buttonStyle}>
           <MessageCircle className="w-6 h-6" />
           Feedback
         </button>
 
-        <button onClick={() => setActiveTab("help")} className={buttonStyle}>
+        <button onClick={() => handleTabClick("help")} className={buttonStyle}>
           <HelpCircle className="w-6 h-6" />
           Help
         </button>
