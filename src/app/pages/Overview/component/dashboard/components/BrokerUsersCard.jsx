@@ -33,7 +33,7 @@ const renderLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent }) =>
 
 export default function UsersBrokerCard() {
   return (
-    <div className="bg-white rounded-xl shadow-md p-4 flex flex-col items-center max-w-[350px] w-full border border-gray-200 transition hover:shadow-lg ml-26 md:ml-0">
+    <div className="bg-white rounded-xl shadow-md p-4 flex flex-col items-center max-w-[350px] w-full border border-gray-200 transition hover:shadow-lg ml-2 md:ml-0">
       <h3 className="font-bold text-sm text-gray-700 mb-2">Users (Broker)</h3>
 
       <PieChart width={150} height={150}>

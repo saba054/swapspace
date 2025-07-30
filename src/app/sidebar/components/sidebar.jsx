@@ -91,7 +91,7 @@ export default function SidebarLayout() {
     <div className="flex h-screen">
       {/* Hamburger menu for mobile */}
       <button
-        className="md:hidden fixed top-4 left-4 z-50 bg-white p-2 rounded shadow"
+        className="md:hidden fixed top-12 left-4 z-50 bg-white p-2 rounded shadow"
         onClick={() => setSidebarOpen(true)}
         aria-label="Open menu"
       >

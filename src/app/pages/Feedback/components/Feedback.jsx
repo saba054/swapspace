@@ -177,87 +177,89 @@ export default function FeedbackPage() {
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-3 sm:p-4 md:p-6 space-y-4 sm:space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between flex-wrap gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h2 className="text-2xl font-semibold">Feedback Management</h2>
-          <p className="text-gray-600">Manage and respond to user feedback</p>
+          <h2 className="text-xl sm:text-2xl font-semibold">Feedback Management</h2>
+          <p className="text-sm sm:text-base text-gray-600">Manage and respond to user feedback</p>
         </div>
         
-        <div className="flex items-center gap-2">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
           <Button 
-            className="bg-teal-600 text-white hover:bg-teal-700"
+            className="bg-teal-600 text-white hover:bg-teal-700 w-full sm:w-auto"
             onClick={() => setShowSubmitForm(true)}
           >
             <MessageSquare className="h-4 w-4 mr-2" />
-            Submit Feedback
+            <span className="hidden sm:inline">Submit Feedback</span>
+            <span className="sm:hidden">Submit</span>
           </Button>
-          <Button variant="outline" onClick={handleDownload}>
+          <Button variant="outline" onClick={handleDownload} className="w-full sm:w-auto">
             <Download className="h-4 w-4 mr-2" />
-            Export
+            <span className="hidden sm:inline">Export</span>
+            <span className="sm:hidden">Export</span>
           </Button>
         </div>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
         <Card>
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Total Feedback</p>
-                <p className="text-2xl font-bold text-gray-900">{stats.total}</p>
+                <p className="text-xs sm:text-sm text-gray-600">Total Feedback</p>
+                <p className="text-lg sm:text-2xl font-bold text-gray-900">{stats.total}</p>
               </div>
-              <MessageSquare className="h-8 w-8 text-teal-600" />
+              <MessageSquare className="h-6 w-6 sm:h-8 sm:w-8 text-teal-600" />
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Pending</p>
-                <p className="text-2xl font-bold text-yellow-600">{stats.pending}</p>
+                <p className="text-xs sm:text-sm text-gray-600">Pending</p>
+                <p className="text-lg sm:text-2xl font-bold text-yellow-600">{stats.pending}</p>
               </div>
-              <Clock className="h-8 w-8 text-yellow-600" />
+              <Clock className="h-6 w-6 sm:h-8 sm:w-8 text-yellow-600" />
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">In Progress</p>
-                <p className="text-2xl font-bold text-blue-600">{stats.inProgress}</p>
+                <p className="text-xs sm:text-sm text-gray-600">In Progress</p>
+                <p className="text-lg sm:text-2xl font-bold text-blue-600">{stats.inProgress}</p>
               </div>
-              <Filter className="h-8 w-8 text-blue-600" />
+              <Filter className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600" />
             </div>
           </CardContent>
         </Card>
         
         <Card>
-          <CardContent className="p-4">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Resolved</p>
-                <p className="text-2xl font-bold text-green-600">{stats.resolved}</p>
+                <p className="text-xs sm:text-sm text-gray-600">Resolved</p>
+                <p className="text-lg sm:text-2xl font-bold text-green-600">{stats.resolved}</p>
               </div>
-              <ThumbsUp className="h-8 w-8 text-green-600" />
+              <ThumbsUp className="h-6 w-6 sm:h-8 sm:w-8 text-green-600" />
             </div>
           </CardContent>
         </Card>
         
-        <Card>
-          <CardContent className="p-4">
+        <Card className="col-span-2 sm:col-span-1">
+          <CardContent className="p-3 sm:p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">Avg Rating</p>
-                <p className="text-2xl font-bold text-purple-600">{stats.averageRating}</p>
+                <p className="text-xs sm:text-sm text-gray-600">Avg Rating</p>
+                <p className="text-lg sm:text-2xl font-bold text-purple-600">{stats.averageRating}</p>
               </div>
-              <Star className="h-8 w-8 text-purple-600 fill-current" />
+              <Star className="h-6 w-6 sm:h-8 sm:w-8 text-purple-600 fill-current" />
             </div>
           </CardContent>
         </Card>
@@ -265,45 +267,49 @@ export default function FeedbackPage() {
 
       {/* Navigation Tabs */}
       <Tabs value={activeTab} onValueChange={setActiveTab} defaultValue="all">
-        <TabsList className="border-b border-gray-200 bg-transparent">
-          <TabsTrigger value="all" className="data-[state=active]:border-b-2 border-teal-600">
+        <TabsList className="border-b border-gray-200 bg-transparent w-full overflow-x-auto">
+          <TabsTrigger value="all" className="data-[state=active]:border-b-2 border-teal-600 whitespace-nowrap">
             All Feedback
           </TabsTrigger>
-          <TabsTrigger value="pending" className="data-[state=active]:border-b-2 border-teal-600">
+          <TabsTrigger value="pending" className="data-[state=active]:border-b-2 border-teal-600 whitespace-nowrap">
             Pending
           </TabsTrigger>
-          <TabsTrigger value="in-progress" className="data-[state=active]:border-b-2 border-teal-600">
+          <TabsTrigger value="in-progress" className="data-[state=active]:border-b-2 border-teal-600 whitespace-nowrap">
             In Progress
           </TabsTrigger>
-          <TabsTrigger value="resolved" className="data-[state=active]:border-b-2 border-teal-600">
+          <TabsTrigger value="resolved" className="data-[state=active]:border-b-2 border-teal-600 whitespace-nowrap">
             Resolved
           </TabsTrigger>
         </TabsList>
       </Tabs>
 
       {/* Feedback List */}
-      <div className="space-y-4">
+      <div className="space-y-3 sm:space-y-4">
         {filteredFeedback.map((item) => (
           <Card key={item.id} className="hover:shadow-md transition-shadow">
-            <CardContent className="p-6">
-              <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <div className="text-2xl">{getCategoryIcon(item.category)}</div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900">{item.title}</h3>
-                    <div className="flex items-center gap-2 text-sm text-gray-600">
-                      <User className="h-3 w-3" />
-                      {item.user}
-                      <span>•</span>
-                      <span>{item.email}</span>
-                      <span>•</span>
-                      <CalendarDays className="h-3 w-3" />
-                      {item.date} at {item.time}
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-4">
+                <div className="flex items-start gap-3">
+                  <div className="text-xl sm:text-2xl flex-shrink-0">{getCategoryIcon(item.category)}</div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-semibold text-gray-900 text-sm sm:text-base">{item.title}</h3>
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 text-xs sm:text-sm text-gray-600 mt-1">
+                      <div className="flex items-center gap-1">
+                        <User className="h-3 w-3" />
+                        <span className="truncate">{item.user}</span>
+                      </div>
+                      <span className="hidden sm:inline">•</span>
+                      <span className="truncate">{item.email}</span>
+                      <span className="hidden sm:inline">•</span>
+                      <div className="flex items-center gap-1">
+                        <CalendarDays className="h-3 w-3" />
+                        <span>{item.date} at {item.time}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 flex-shrink-0">
                   <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(item.status)}`}>
                     {item.status.replace('-', ' ')}
                   </span>
@@ -313,46 +319,50 @@ export default function FeedbackPage() {
                 </div>
               </div>
               
-              <div className="flex items-center gap-4 mb-4">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4">
                 <div className="flex items-center gap-1">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <Star
                       key={star}
-                      className={`h-4 w-4 ${star <= item.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
+                      className={`h-3 w-3 sm:h-4 sm:w-4 ${star <= item.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
                     />
                   ))}
-                  <span className="text-sm text-gray-600 ml-1">({item.rating}/5)</span>
+                  <span className="text-xs sm:text-sm text-gray-600 ml-1">({item.rating}/5)</span>
                 </div>
                 
                 <div className="flex items-center gap-1">
                   <Tag className="h-3 w-3 text-gray-400" />
-                  <span className="text-sm text-gray-600">{getCategoryName(item.category)}</span>
+                  <span className="text-xs sm:text-sm text-gray-600">{getCategoryName(item.category)}</span>
                 </div>
               </div>
               
-              <p className="text-gray-700 mb-4">{item.message}</p>
+              <p className="text-gray-700 mb-4 text-sm sm:text-base">{item.message}</p>
               
-              <div className="flex items-center justify-between">
-                <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <Button
                     size="sm"
                     variant="outline"
                     onClick={() => handleStatusUpdate(item.id, "in-progress")}
                     disabled={item.status === "in-progress"}
+                    className="w-full sm:w-auto"
                   >
-                    Mark In Progress
+                    <span className="hidden sm:inline">Mark In Progress</span>
+                    <span className="sm:hidden">In Progress</span>
                   </Button>
                   <Button
                     size="sm"
                     variant="outline"
                     onClick={() => handleStatusUpdate(item.id, "resolved")}
                     disabled={item.status === "resolved"}
+                    className="w-full sm:w-auto"
                   >
-                    Mark Resolved
+                    <span className="hidden sm:inline">Mark Resolved</span>
+                    <span className="sm:hidden">Resolved</span>
                   </Button>
                 </div>
                 
-                <Button size="sm" className="bg-teal-600 text-white hover:bg-teal-700">
+                <Button size="sm" className="bg-teal-600 text-white hover:bg-teal-700 w-full sm:w-auto">
                   <MessageSquare className="h-3 w-3 mr-1" />
                   Reply
                 </Button>
@@ -370,11 +380,11 @@ export default function FeedbackPage() {
 
       {/* Submit Feedback Modal */}
       {showSubmitForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <Card className="w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto">
-            <CardContent className="p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl font-semibold">Submit Feedback</h3>
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <CardContent className="p-4 sm:p-6">
+              <div className="flex items-center justify-between mb-4 sm:mb-6">
+                <h3 className="text-lg sm:text-xl font-semibold">Submit Feedback</h3>
                 <Button
                   variant="ghost"
                   size="sm"
@@ -384,23 +394,23 @@ export default function FeedbackPage() {
                 </Button>
               </div>
               
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {/* Category Selection */}
                 <div>
-                  <label className="block text-sm font-medium mb-3">Category</label>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
+                  <label className="block text-sm font-medium mb-2 sm:mb-3">Category</label>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                     {feedbackCategories.map((category) => (
                       <button
                         key={category.id}
                         onClick={() => setSelectedCategory(category.id)}
-                        className={`p-3 rounded-lg border-2 text-left transition ${
+                        className={`p-2 sm:p-3 rounded-lg border-2 text-left transition ${
                           selectedCategory === category.id
                             ? "border-teal-500 bg-teal-50"
                             : "border-gray-200 hover:border-gray-300"
                         }`}
                       >
-                        <div className="text-lg mb-1">{category.icon}</div>
-                        <div className="text-sm font-medium">{category.name}</div>
+                        <div className="text-base sm:text-lg mb-1">{category.icon}</div>
+                        <div className="text-xs sm:text-sm font-medium">{category.name}</div>
                       </button>
                     ))}
                   </div>
@@ -408,7 +418,7 @@ export default function FeedbackPage() {
 
                 {/* Rating */}
                 <div>
-                  <label className="block text-sm font-medium mb-3">Rating</label>
+                  <label className="block text-sm font-medium mb-2 sm:mb-3">Rating</label>
                   <div className="flex items-center gap-1">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <button
@@ -419,7 +429,7 @@ export default function FeedbackPage() {
                         className="text-2xl transition"
                       >
                         <Star
-                          className={`h-8 w-8 ${
+                          className={`h-6 w-6 sm:h-8 sm:w-8 ${
                             star <= (hoverRating || rating)
                               ? 'text-yellow-400 fill-current'
                               : 'text-gray-300'
@@ -427,21 +437,21 @@ export default function FeedbackPage() {
                         />
                       </button>
                     ))}
-                    <span className="ml-2 text-sm text-gray-600">
+                    <span className="ml-2 text-xs sm:text-sm text-gray-600">
                       {rating > 0 ? `${rating}/5 stars` : "Click to rate"}
                     </span>
                   </div>
                 </div>
 
                 {/* Form Fields */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium mb-2">Name</label>
                     <input
                       type="text"
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+                      className="w-full p-2 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
                       placeholder="Your name"
                     />
                   </div>
@@ -452,7 +462,7 @@ export default function FeedbackPage() {
                       type="email"
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+                      className="w-full p-2 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -464,7 +474,7 @@ export default function FeedbackPage() {
                     type="text"
                     value={formData.title}
                     onChange={(e) => setFormData({...formData, title: e.target.value})}
-                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500"
+                    className="w-full p-2 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm"
                     placeholder="Brief description of your feedback"
                   />
                 </div>
@@ -474,20 +484,21 @@ export default function FeedbackPage() {
                   <textarea
                     value={formData.message}
                     onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 h-32 resize-none"
+                    className="w-full p-2 sm:p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500 h-24 sm:h-32 resize-none text-sm"
                     placeholder="Please provide detailed feedback..."
                   />
                 </div>
                 
-                <div className="flex justify-end gap-2">
+                <div className="flex flex-col sm:flex-row justify-end gap-2">
                   <Button
                     variant="outline"
                     onClick={() => setShowSubmitForm(false)}
+                    className="w-full sm:w-auto"
                   >
                     Cancel
                   </Button>
                   <Button
-                    className="bg-teal-600 text-white hover:bg-teal-700"
+                    className="bg-teal-600 text-white hover:bg-teal-700 w-full sm:w-auto"
                     onClick={handleSubmitFeedback}
                   >
                     <Send className="h-4 w-4 mr-2" />
